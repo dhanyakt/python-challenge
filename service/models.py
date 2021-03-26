@@ -373,4 +373,28 @@ class JSONFactory:
         for path, value in queries:
             self.insert_query(path, value, record)
 
+        # filter out unique residence addresses from the record
+        for record_key, record_value in record.items():
+            logger.info(f'{record_key} - {record_value}')
+            shared_address = False
+            for report in record_value:
+                logger.info(f'{report} {type(report)}')
+                unique_dict = {}
+                if 'Residences Report' == report['title']:
+                    residences = report['residences']
+                    for residence in residences:
+                        unique_dict[str(residence)] = residence
+                    residences_new = []
+                    for new_value in unique_dict.values():
+                        residences_new.append(new_value)
+                    if len(residences_new) == 1:
+                        shared_address = True
+                    report['residences'] = residences_new
+                    logger.info(f'{record}')
+                if 'Borrowers Report' == report['title']:
+                    if shared_address:
+                        report['shared_address'] = True
+                    else:
+                        report['shared_address'] = False
+
         return record
