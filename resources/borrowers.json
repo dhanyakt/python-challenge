@@ -18,27 +18,8 @@
     {
         "source": "$.applications[0].coborrower.shared_address",
         "target": "$.reports[?(@.title == 'Borrowers Report')].borrowers[1].shared_address"
-    },
-    {
-        "source": "$.applications[1].borrower.firstName",
-        "target": "$.reports[?(@.title == 'Borrowers Report')].borrowers[2].first_name"
-    },
-    {
-        "source": "$.applications[1].borrower.lastName",
-        "target": "$.reports[?(@.title == 'Borrowers Report')].borrowers[2].last_name"
-    },
-    {
-        "source": "$.applications[1].coborrower.firstName",
-        "target": "$.reports[?(@.title == 'Borrowers Report')].borrowers[3].first_name"
-    },
-    {
-        "source": "$.applications[1].coborrower.lastName",
-        "target": "$.reports[?(@.title == 'Borrowers Report')].borrowers[3].last_name"
-    },
-    {
-        "source": "$.applications[1].coborrower.shared_address",
-        "target": "$.reports[?(@.title == 'Borrowers Report')].borrowers[3].shared_address"
     }
+
 ]
 
 
